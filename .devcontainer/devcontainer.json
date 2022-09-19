@@ -1,0 +1,11 @@
+{
+  "name": "boke-ai",
+  "service": "transformers",
+  "workspaceFolder": "/work",
+  "dockerComposeFile": "../docker-compose.yml",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]
+    }
+  }
+}
