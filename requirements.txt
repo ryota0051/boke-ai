@@ -7,3 +7,4 @@ tqdm==4.62.3
 ipywidgets==8.0.2
 flake8==5.0.4
 lightgbm==3.3.2
+optuna==3.0.2
