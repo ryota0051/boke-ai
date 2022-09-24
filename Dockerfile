@@ -2,7 +2,9 @@ FROM pytorch/pytorch:1.12.0-cuda11.3-cudnn8-runtime
 
 WORKDIR /work
 
-RUN apt update -y && apt install git -y
+RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+RUN apt update -y && apt install -y git libopencv-dev
 
 COPY ./requirements.txt ./
 
