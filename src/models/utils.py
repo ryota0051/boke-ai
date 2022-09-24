@@ -23,12 +23,15 @@ def plot_confusion_matrix(
             y_pred: np.ndarray,
             conf_args={'normalize': None},
             heatmap_args={'cmap': 'Blues', 'annot': True, 'fmt': 'd'},
-            figsize=(8, 8)
+            figsize=(8, 8),
+            dst=None
         ):
     if len(y_pred.shape) == 2:
         y_pred = np.argmax(y_pred, axis=1)
     cm = confusion_matrix(y_true=y_true, y_pred=y_pred, **conf_args)
-    _, ax = plt.subplots(figsize=figsize)
+    fig, ax = plt.subplots(figsize=figsize)
     sns.heatmap(cm, ax=ax, **heatmap_args)
     ax.set_ylabel('Label')
     ax.set_xlabel('Predict')
+    if dst:
+        fig.savefig(dst)
