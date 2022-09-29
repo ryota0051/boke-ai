@@ -10,3 +10,5 @@ COPY ./requirements.txt ./
 
 RUN pip install --upgrade pip && pip install -r requirements.txt \
     && pip install git+https://github.com/rinnakk/japanese-clip.git@v0.2.0
+
+RUN python -m unidic download

@@ -162,3 +162,6 @@ Footer
 
 # workspace
 *.code-workspace
+
+# yolov5s.pt
+yolo*.pt
