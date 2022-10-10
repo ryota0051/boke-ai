@@ -36,9 +36,17 @@
      docker-compose -f docker-compose-cpu.yml up
      ```
 
-2. `http://localhost:8888`にアクセスして、`notebooks`配下の `1.baseline.ipynb`を実行(`0.eda.ipynb`から実行してもよい。)
+2. `http://localhost:8888`にアクセスして、`notebooks`配下の notebook を以下の順番で実行
+
+   1. `1.4 MMBT_stratified_kfold_model.ipynb`
+
+   2. `2.1 extract_feature.ipynb`
+
+   3. `2.3 train_extracted_feature_with_stacking.ipynb`
 
 ## 使用モデル, 特徴量
+
+1. 下記の 3 つのモデルをスタッキングさせたモデル
 
 - MMBT(https://arxiv.org/pdf/1909.02950.pdf)
 
@@ -48,8 +56,20 @@
 
     - テキスト特徴量: BERT
 
-## 実施予定事項
+- lightGBM
 
-- [ ] 学習した MMBT(もしくは今回のタスクで未学習のモデル)の中間出力取り出し、他の特徴量(ex. 文字数、人の数、動物の数など)と組み合わせて lightGBM などで学習(2.extract_feature.ipynb にて実施中)
+  特徴量は、下記を使用
 
-- [ ] 画像と文字の類似度を特徴量に加える(https://qiita.com/sonoisa/items/d6db2f130fa9a4ce0c2c などを参考)
+  - 学習した MMBT の中間出力
+
+  - 文章長
+
+  - 文章内に人を意味する単語が入っているか(固有表現抽出を使用)
+
+  - tfidf の各種統計量
+
+  - coco データで学習済みの yolov5 で検出した物体数
+
+- RandomForest
+
+  特徴量は、lightGBM のものと同様のものを使用
